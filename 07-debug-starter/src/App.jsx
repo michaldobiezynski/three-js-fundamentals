@@ -3,7 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { Grid, useHelper } from "@react-three/drei";
 import { useRef } from "react";
 
-import { useControls } from "leva";
+import { useControls, Leva } from "leva";
 import * as THREE from "three";
 
 const Box = () => {
@@ -41,6 +41,7 @@ const Box = () => {
 function App() {
   return (
     <>
+      <Leva hidden />
       <Canvas camera={{ position: [3, 3, 3] }}>
         <axesHelper />
         {/* <gridHelper args={[10, 10, "green", "blue"]} /> */}
