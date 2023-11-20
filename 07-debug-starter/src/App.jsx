@@ -2,16 +2,38 @@ import { Canvas } from "@react-three/fiber";
 
 import { Grid, useHelper } from "@react-three/drei";
 import { useRef } from "react";
+
+import { useControls } from "leva";
 import * as THREE from "three";
 
 const Box = () => {
   const ref = useRef();
   useHelper(ref, THREE.BoxHelper, "red");
 
+  const { position, opacity, transparent, color } = useControls({
+    position: {
+      x: 0,
+      y: 0,
+      z: 0,
+    },
+    color: "#ff0000",
+    opacity: {
+      value: 1,
+      min: 0,
+      max: 1,
+      step: 0.01,
+    },
+    transparent: true,
+  });
+
   return (
-    <mesh ref={ref}>
+    <mesh ref={ref} position={[position.x, position.y, position.z]}>
       <boxGeometry />
-      <meshBasicMaterial color="white" transparent opacity={0} />
+      <meshBasicMaterial
+        color={color}
+        transparent={transparent}
+        opacity={opacity}
+      />
     </mesh>
   );
 };
