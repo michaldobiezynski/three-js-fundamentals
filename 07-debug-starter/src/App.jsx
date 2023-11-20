@@ -1,10 +1,15 @@
 import { Canvas } from "@react-three/fiber";
 
-import { Grid } from "@react-three/drei";
+import { Grid, useHelper } from "@react-three/drei";
+import { useRef } from "react";
+import * as THREE from "three";
 
 const Box = () => {
+  const ref = useRef();
+  useHelper(ref, THREE.BoxHelper, "red");
+
   return (
-    <mesh>
+    <mesh ref={ref}>
       <boxGeometry />
       <meshBasicMaterial color="white" transparent opacity={0} />
     </mesh>
